@@ -8,6 +8,7 @@ import { checkURL } from "~/utils";
 import { useAppSelector } from "~/redux/hooks";
 import type { SiteSectionData, SiteData } from "~/types";
 import Flmngr from "@flmngr/flmngr-react";
+import { ReactCalculator } from "simple-react-calculator";
 
 interface SafariState {
   goURL: string;
@@ -154,7 +155,7 @@ const NoInternetPage = () => {
   );
 };
 
-const Safari = ({ width }: SafariProps) => {
+const Calc = ({ width }: SafariProps) => {
   const wifi = useAppSelector((state) => state.system.wifi);
   const [state, setState] = useState<SafariState>({
     goURL: "",
@@ -188,70 +189,11 @@ const Safari = ({ width }: SafariProps) => {
   const buttonColor = state.goURL === "" ? "c-text-400" : "c-text-700";
   const grid = (width as number) < 640 ? "grid-cols-2" : "grid-cols-3";
   const hideLast = (width as number) < 640 ? "hidden" : "flex";
-
-  useEffect(() => {
-    Flmngr.open({
-      apiKey: "FLMNFLMN", // default free key
-      urlFileManager: "https://fm.flmngr.com/fileManager", // demo server
-      urlFiles: "https://fm.flmngr.com/files", // demo file storage
-      isMultiple: false, // let selecting a single file
-      acceptExtensions: ["png", "jpg", "jpeg", "gif", "webp"],
-      onFinish: (files) => {
-        console.log("User picked:");
-        console.log(files);
-      }
-    });
-  }, []);
-
   return (
-    <></>
-    // <div className="w-full h-full">
-    //   {/* browser topbar */}
-    //   <div className={`h-10 grid ${grid} items-center c-bg-white`}>
-    //     <div className="flex px-2">
-    //       <button
-    //         className={`safari-btn w-7 ${buttonColor}`}
-    //         onClick={() => setGoURL("")}
-    //       >
-    //         <FiChevronLeft size={20} />
-    //       </button>
-    //       <button className="safari-btn w-7 c-text-400">
-    //         <FiChevronRight size={20} />
-    //       </button>
-    //       <button className="safari-btn w-9 ml-3 c-text-700">
-    //         <BsLayoutSidebar size={14} />
-    //       </button>
-    //     </div>
-    //     <div className="hstack space-x-2 px-2">
-    //       <button className="safari-btn w-9 -ml-10 c-text-400">
-    //         <FaShieldAlt size={14} />
-    //       </button>
-    //       <input
-    //         type="text"
-    //         value={state.currentURL}
-    //         onChange={(e) => setState({ ...state, currentURL: e.target.value })}
-    //         onKeyPress={pressURL}
-    //         className="h-6 w-full p-2 rounded font-normal no-outline text-sm text-center c-text-500 c-bg-200"
-    //         border="2 transparent focus:blue-400 dark:focus:blue-500"
-    //         placeholder="Search or enter website name"
-    //       />
-    //     </div>
-    //     <div className={`${hideLast} justify-end space-x-2 px-2`}>
-    //       <button className={`safari-btn w-9 ${buttonColor}`}>
-    //         <IoShareOutline size={16} />
-    //       </button>
-    //       <button className="safari-btn w-9 c-text-700">
-    //         <IoCopyOutline size={16} />
-    //       </button>
-    //     </div>
-    //   </div>
-
-    //   {/* browser content */}
-    //   <div className="safari-content w-full bg-white">
-    //     <button>Open file manager</button>
-    //   </div>
-    // </div>
+    <div style={{ height: "500px" }}>
+      <ReactCalculator />;
+    </div>
   );
 };
 
-export default Safari;
+export default Calc;

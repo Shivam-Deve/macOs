@@ -21,6 +21,7 @@ module.exports = {
   rules: {
     "react-hooks/exhaustive-deps": "off",
     "react/react-in-jsx-scope": "off",
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "prettier/prettier": ["error", { endOfLine: "auto" }]
   }
 };

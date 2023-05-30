@@ -6,6 +6,8 @@ import FileManager from "~/components/apps/FileManager";
 import VSCode from "~/components/apps/VSCode";
 
 import type { AppsData } from "~/types";
+import Calc from "~/components/apps/Calc";
+import Editor from "~/components/apps/Editor";
 
 const apps: AppsData[] = [
   {
@@ -78,9 +80,17 @@ const apps: AppsData[] = [
     id: "fileManager",
     title: "File Manager",
     desktop: true,
-    show:true,
+    show: true,
     img: "img/icons/folder.png",
     content: <FileManager />
+  },
+  {
+    id: "calculator",
+    title: "Calc",
+    desktop: true,
+    show: true,
+    img: "img/icons/calc.png",
+    content: <Calc />
   }
 ];
 
